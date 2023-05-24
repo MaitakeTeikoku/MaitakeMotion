@@ -55,6 +55,15 @@
 
     <p></p>
     <div>
+        デバイスによる傾きの更新間隔(ms): <span id="orientationInterval"></span>
+    </div>
+    <div>
+        デバイスによる角速度と加速度の更新間隔(ms): <span id="motionInterval"></span>
+    </div>
+    *更新間隔は、以下の記録回数とは関係ない
+
+    <p></p>
+    <div>
         <button id="startRecord" onclick="startRecord();" disabled>記録開始</button>
         <button id="stopRecord" onclick="stopRecord();" disabled>記録終了</button>
     </div>
@@ -68,11 +77,6 @@
     </div>
     <div>
         加速度記録回数: <span id="accelerationCount"></span>
-    </div>
-
-    <p></p>
-    <div>
-        角速度と加速度の記録頻度(ms): <span id="interval"></span>
     </div>
 
     <p></p>
@@ -150,6 +154,8 @@
             //. 通常の処理を無効にする
             event.preventDefault();
 
+            document.getElementById('orientationInterval').textContent = event.interval;
+
             // 傾きの情報を取得
             const alpha = event.alpha;
             const beta = event.beta;
@@ -222,7 +228,7 @@
 
         // deviceMotionイベントのハンドラ
         function deviceMotion(event) {
-            document.getElementById('interval').textContent = event.interval;
+            document.getElementById('motionInterval').textContent = event.interval;
 
             // 角速度のデータを取得
             const rotationRate = event.rotationRate;
