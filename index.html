@@ -55,12 +55,9 @@
 
     <p></p>
     <div>
-        デバイスによる傾きの更新間隔(ms): <span id="orientationInterval"></span>
-    </div>
-    <div>
         デバイスによる角速度と加速度の更新間隔(ms): <span id="motionInterval"></span>
     </div>
-    *更新間隔は、以下の記録回数とは関係ない
+    *更新間隔は、以下の記録間隔とは一致しない
 
     <p></p>
     <div>
@@ -153,8 +150,6 @@
         function deviceOrientation(event) {
             //. 通常の処理を無効にする
             event.preventDefault();
-
-            document.getElementById('orientationInterval').textContent = event.interval;
 
             // 傾きの情報を取得
             const alpha = event.alpha;
